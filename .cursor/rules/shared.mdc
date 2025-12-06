@@ -1,0 +1,43 @@
+---
+alwaysApply: true
+---
+
+# ArtisanMarket - Zasady Projektu
+
+## Filozofia MVP
+- **Prostota przede wszystkim**: Implementuj tylko funkcjonalności wymienione w PRD. Unikaj przedwczesnej optymalizacji i funkcji spoza zakresu MVP.
+- **Brak integracji płatniczych**: Wszystkie zamówienia są realizowane z płatnością przy odbiorze (cash on delivery).
+- **Jeden użytkownik = jeden sklep**: Każde konto może być powiązane tylko z jednym sklepem.
+
+## Stos Technologiczny
+- **Backend**: .NET 9 z Blazor Pages (server-side rendering)
+- **Baza danych**: PostgreSQL z Entity Framework Core jako ORM
+- **Testowanie**: xUnit dla testów jednostkowych
+- **Wdrożenie**: Docker kontenery, CI/CD przez GitHub Actions, hosting na DigitalOcean
+
+## Architektura i Wzorce
+- Używaj Blazor Pages dla wszystkich widoków - unikaj komponentów Razor tam, gdzie wystarczą strony.
+- Wszystkie operacje na bazie danych przez Entity Framework Core - nie używaj raw SQL chyba że absolutnie konieczne.
+- Uwierzytelnianie przez ASP.NET Core Identity (już skonfigurowane w projekcie).
+- Model danych: ApplicationUser (Identity) → Shop → Product → Order
+
+## Zasady Implementacji
+- **Walidacja**: Wszystkie formularze muszą mieć walidację po stronie serwera i klienta.
+- **Bezpieczeństwo**: Zawsze weryfikuj uprawnienia użytkownika przed operacjami modyfikującymi dane.
+- **Obsługa błędów**: Zapewnij czytelne komunikaty błędów dla użytkownika końcowego.
+- **Nazewnictwo**: Używaj polskich nazw w interfejsie użytkownika, angielskich w kodzie.
+
+## Funkcjonalności NIE w zakresie MVP
+NIE implementuj (celowo wyłączone z MVP):
+- Integracje płatnicze
+- Systemy prowizji
+- Zdjęcia produktów
+- Warianty produktów (rozmiary, kolory)
+- Systemy ocen i recenzji
+- Wyszukiwarka i zaawansowane filtry
+- Statusy zamówień
+- Anulowanie zamówień przez aplikację
+
+## Testowanie
+- Pisz testy jednostkowe dla logiki biznesowej używając xUnit.
+- Priorytetyzuj testy dla krytycznych ścieżek: tworzenie sklepu, dodawanie produktów, składanie zamówień.
