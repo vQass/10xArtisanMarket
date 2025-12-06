@@ -13,6 +13,12 @@ Poniższy dokument opisuje kompletny stos technologiczny wybrany do budowy i wdr
 - **Baza Danych:** **PostgreSQL**
   - Zaawansowana, darmowa i otwartoźródłowa relacyjna baza danych, znana ze swojej niezawodności, skalowalności i bogatego zestawu funkcji.
 
+- **ORM:** **Entity Framework Core**
+  - Ułatwia mapowanie obiektowo-relacyjne, co przyspiesza rozwój aplikacji i upraszcza zarządzanie danymi.
+
+- **Testowanie:** **xUnit**
+  - Framework do testów jednostkowych w .NET, co zapewnia łatwą integrację z procesem CI/CD.
+
 ## Infrastruktura i Wdrożenie (CI/CD)
 
 - **System CI/CD:** **GitHub Actions**
