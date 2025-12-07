@@ -1,0 +1,6 @@
+<Project>
+  <PropertyGroup>
+    <EFCoreStartupProject>$(MSBuildThisFileDirectory)ArtisanMarket.BlazorApp\ArtisanMarket.BlazorApp.csproj</EFCoreStartupProject>
+    <EFCoreProject>$(MSBuildThisFileDirectory)ArtisanMarket.Infrastructure\ArtisanMarket.Infrastructure.csproj</EFCoreProject>
+  </PropertyGroup>
+</Project>

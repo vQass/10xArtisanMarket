@@ -2,7 +2,7 @@ using System.Security.Claims;
 using System.Text.Json;
 using ArtisanMarket.BlazorApp.Components.Account.Pages;
 using ArtisanMarket.BlazorApp.Components.Account.Pages.Manage;
-using ArtisanMarket.BlazorApp.Data;
+using ArtisanMarket.Domain.Entities;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Http.Extensions;

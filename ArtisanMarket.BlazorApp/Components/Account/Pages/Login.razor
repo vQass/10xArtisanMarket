@@ -1,9 +1,9 @@
-﻿@page "/Account/Login"
+@page "/Account/Login"
 
 @using System.ComponentModel.DataAnnotations
 @using Microsoft.AspNetCore.Authentication
 @using Microsoft.AspNetCore.Identity
-@using ArtisanMarket.BlazorApp.Data
+@using ArtisanMarket.Domain.Entities
 
 @inject SignInManager<ApplicationUser> SignInManager
 @inject ILogger<Login> Logger

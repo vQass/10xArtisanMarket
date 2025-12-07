@@ -1,4 +1,4 @@
-using ArtisanMarket.BlazorApp.Data;
+using ArtisanMarket.Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 

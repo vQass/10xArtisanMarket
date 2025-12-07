@@ -1,5 +1,5 @@
 using System.Security.Claims;
-using ArtisanMarket.BlazorApp.Data;
+using ArtisanMarket.Domain.Entities;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Server;
 using Microsoft.AspNetCore.Identity;
