@@ -89,10 +89,6 @@ Tabela pozycji zamówienia z snapshotem danych produktu.
 
 ## 2. Relacje między tabelami
 
-- **auth.users → users**: Jeden-do-jednego (1:1)
-  - Każdy użytkownik w Supabase Auth powinien mieć odpowiadający rekord w tabeli users
-  - Implementowane przez FOREIGN KEY users.id → auth.users.id
-
 - **users → shops**: Jeden-do-zero-lub-jednego (1:0..1)
   - Jeden użytkownik może mieć maksymalnie jeden sklep
   - Implementowane przez UNIQUE constraint na shops.user_id
@@ -139,12 +135,9 @@ Tabela pozycji zamówienia z snapshotem danych produktu.
 
 Row Level Security będzie implementowane po stronie aplikacji zgodnie z decyzjami z sesji planowania. Baza danych nie zawiera polityk RLS, ponieważ izolacja danych między sprzedawcami i kupującymi jest obsługiwana przez logikę aplikacji.
 
-**Uwaga:** Supabase domyślnie włącza RLS dla tabeli auth.users. Aplikacja powinna używać Supabase Client SDK do uwierzytelniania i zarządzania sesjami użytkowników.
-
 ## 5. Dodatkowe uwagi i wyjaśnienia
 
 ### Decyzje projektowe
-- **Supabase Auth**: Uwierzytelnianie jest obsługiwane przez Supabase Auth (auth.users). Tabela users w schemacie public jest rozszerzeniem auth.users i przechowuje dodatkowe dane aplikacji. Podczas rejestracji użytkownika w Supabase Auth, aplikacja powinna automatycznie utworzyć odpowiadający rekord w tabeli users.
 
 - **Soft delete**: Implementowane przez pole `deleted_at` typu TIMESTAMPTZ we wszystkich encjach głównych (shops, products, orders). Pozwala na zachowanie integralności referencyjnej i audytu historycznego.
 
