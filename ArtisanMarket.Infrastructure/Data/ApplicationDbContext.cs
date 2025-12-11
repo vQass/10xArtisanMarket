@@ -1,16 +1,16 @@
 using ArtisanMarket.Domain.Entities;
 using ArtisanMarket.Infrastructure.Data.Configurations;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace ArtisanMarket.Infrastructure.Data;
 
-public class ApplicationDbContext : DbContext
+public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
     {
     }
 
-    public DbSet<User> Users => Set<User>();
     public DbSet<Shop> Shops => Set<Shop>();
     public DbSet<Product> Products => Set<Product>();
     public DbSet<OrderStatus> OrderStatuses => Set<OrderStatus>();

@@ -1,6 +1,7 @@
 using ArtisanMarket.Application.Services;
 using ArtisanMarket.BlazorApp.Components;
 using ArtisanMarket.BlazorApp.Components.Account;
+using ArtisanMarket.Domain.Entities;
 using ArtisanMarket.Infrastructure;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -17,9 +18,17 @@ namespace ArtisanMarket.BlazorApp
             builder.Services.AddRazorComponents()
                 .AddInteractiveServerComponents();
 
+            builder.Services.AddRazorPages();
+
             // Register application services
             builder.Services.AddInfrastructure(builder.Configuration);
             builder.Services.AddScoped<ICatalogService, CatalogService>();
+
+            // Configure Identity
+            builder.Services.AddIdentityCore<ApplicationUser>()
+                .AddEntityFrameworkStores<ArtisanMarket.Infrastructure.Data.ApplicationDbContext>()
+                .AddSignInManager()
+                .AddDefaultTokenProviders();
 
             // Configure authentication with Identity
             builder.Services.AddAuthentication(options =>
@@ -31,6 +40,11 @@ namespace ArtisanMarket.BlazorApp
 
             // Register AuthenticationStateProvider for Blazor
             builder.Services.AddScoped<AuthenticationStateProvider, IdentityRevalidatingAuthenticationStateProvider>();
+
+            // Register Identity services for Blazor
+            builder.Services.AddScoped<IdentityRedirectManager>();
+            builder.Services.AddScoped<IdentityUserAccessor>();
+            builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
 
             // Add authorization
             builder.Services.AddAuthorizationBuilder();
@@ -61,6 +75,9 @@ namespace ArtisanMarket.BlazorApp
             app.MapStaticAssets();
             app.MapRazorComponents<App>()
                 .AddInteractiveServerRenderMode();
+
+            // Map Identity pages
+            app.MapRazorPages();
 
             // Map Identity endpoints
             app.MapAdditionalIdentityEndpoints();
