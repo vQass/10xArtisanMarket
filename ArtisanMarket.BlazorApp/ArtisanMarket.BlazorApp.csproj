@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ArtisanMarket.Application\ArtisanMarket.Application.csproj" />
     <ProjectReference Include="..\ArtisanMarket.Domain\ArtisanMarket.Domain.csproj" />
     <ProjectReference Include="..\ArtisanMarket.Infrastructure\ArtisanMarket.Infrastructure.csproj" />
   </ItemGroup>

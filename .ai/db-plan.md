@@ -172,3 +172,4 @@ Row Level Security będzie implementowane po stronie aplikacji zgodnie z decyzja
 - Opcjonalne pola w tabeli shops (description, contact_email, phone) przygotowują na przyszłe funkcjonalności
 - Struktura order_items pozwala na łatwe dodanie dodatkowych pól jak rabaty, opcje produktu itp.
 - Brak created_at/updated_at zgodnie z decyzjami z sesji planowania - aplikacja może implementować własne mechanizmy śledzenia zmian jeśli będzie to potrzebne
+

@@ -1,6 +1,6 @@
+using ArtisanMarket.Application.Services;
 using ArtisanMarket.BlazorApp.Components;
 using ArtisanMarket.BlazorApp.Components.Account;
-using ArtisanMarket.Domain.Entities;
 using ArtisanMarket.Infrastructure;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -17,7 +17,9 @@ namespace ArtisanMarket.BlazorApp
             builder.Services.AddRazorComponents()
                 .AddInteractiveServerComponents();
 
+            // Register application services
             builder.Services.AddInfrastructure(builder.Configuration);
+            builder.Services.AddScoped<ICatalogService, CatalogService>();
 
             // Configure authentication with Identity
             builder.Services.AddAuthentication(options =>

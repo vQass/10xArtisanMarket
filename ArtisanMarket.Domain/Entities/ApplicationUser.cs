@@ -8,3 +8,4 @@ public class ApplicationUser : IdentityUser
     public Shop? Shop { get; set; }
     public ICollection<Order> Orders { get; set; } = new List<Order>();
 }
+
