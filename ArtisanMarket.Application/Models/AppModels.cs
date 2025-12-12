@@ -169,3 +169,30 @@ public class CreateOrderDto
     [StringLength(50, MinimumLength = 2, ErrorMessage = "Miasto musi mieć od 2 do 50 znaków")]
     public string ShippingCity { get; set; } = string.Empty;
 }
+
+/// <summary>
+/// ViewModel dla strony tworzenia sklepu.
+/// Przechowuje stan UI i dane formularza.
+/// </summary>
+public class CreateShopViewModel
+{
+    /// <summary>
+    /// Dane formularza tworzenia sklepu.
+    /// </summary>
+    public CreateShopDto Model { get; set; } = new();
+
+    /// <summary>
+    /// Flaga wskazująca, czy dane są obecnie przetwarzane.
+    /// </summary>
+    public bool IsLoading { get; set; } = false;
+
+    /// <summary>
+    /// Globalny komunikat błędu wyświetlany użytkownikowi.
+    /// </summary>
+    public string? ErrorMessage { get; set; }
+
+    /// <summary>
+    /// Flaga wskazująca, czy operacja została zakończona sukcesem.
+    /// </summary>
+    public bool IsSuccess { get; set; } = false;
+}

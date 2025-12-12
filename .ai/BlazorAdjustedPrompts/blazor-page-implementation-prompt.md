@@ -3,13 +3,13 @@ Twoim zadaniem jest wdrożenie funkcjonalności w Blazor (Razor Component/Page) 
 Najpierw przeanalizuj załączony plan implementacji:
 
 <implementation_plan>
-{{implementation-plan}} ← dodaj referencję do planu implementacji (np. @feature-implementation-plan.md)
+@shop-creation-implementation-plan.md
 </implementation_plan>
 
-<types> {{types}} ← dodaj referencje do definicji typów (np. @types) </types>
+<types> Folder @Entities </types>
 
 <implementation_rules>
-{{frontend-backend-rules}} ← dodaj referencje do reguł projektowych (np. @shared.mdc, @frontend.mdc, @blazor.mdc)
+@shared.mdc
 </implementation_rules>
 
 <implementation_approach>

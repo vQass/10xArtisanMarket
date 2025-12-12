@@ -22,7 +22,7 @@ namespace ArtisanMarket.BlazorApp
 
             // Register application services
             builder.Services.AddInfrastructure(builder.Configuration);
-            builder.Services.AddScoped<ICatalogService, CatalogService>();
+            builder.Services.AddApplicationServices();
 
             // Configure Identity
             builder.Services.AddIdentityCore<ApplicationUser>()
