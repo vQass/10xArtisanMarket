@@ -19,28 +19,24 @@
     @if (ViewModel.IsLoading)
     {
         <div class="text-center py-5">
-            <div class="spinner-border text-primary" role="status">
-                <span class="visually-hidden">Ładowanie...</span>
-            </div>
+            <FluentProgressRing />
             <p class="mt-3">Sprawdzanie statusu sklepu...</p>
         </div>
     }
     else if (!string.IsNullOrEmpty(ViewModel.ErrorMessage))
     {
-        <div class="alert alert-danger" role="alert">
-            <h4 class="alert-heading">Błąd</h4>
+        <FluentMessageBar Intent="MessageIntent.Error">
+            <strong>Błąd</strong>
             <p>@ViewModel.ErrorMessage</p>
-        </div>
+        </FluentMessageBar>
     }
     else
     {
         <div class="row justify-content-center">
             <div class="col-md-8 col-lg-6">
-                <div class="card shadow">
-                    <div class="card-header">
-                        <h5 class="mb-0">Informacje o sklepie</h5>
-                    </div>
-                    <div class="card-body">
+                <FluentCard Elevation="Elevation.Two">
+                    <h5 class="mb-0">Informacje o sklepie</h5>
+                    <div>
                         @if (ViewModel != null)
                         {
                             <EditForm Model="ViewModel" method="post" OnSubmit="CreateShopAsync" FormName="createShopForm">
@@ -49,58 +45,47 @@
 
                             @if (!string.IsNullOrEmpty(ViewModel.ErrorMessage))
                             {
-                                <div class="alert alert-danger">
+                                <FluentMessageBar Intent="MessageIntent.Error">
                                     @ViewModel.ErrorMessage
-                                </div>
+                                </FluentMessageBar>
                             }
 
-                            <div class="mb-3">
-                                    <InputText id="ViewModel.Model.Name" class="form-control" @bind-Value="ViewModel.Model.Name" />
-                                <label for="ViewModel.Model.Name" class="form-label">Nazwa sklepu <span class="text-danger">*</span></label>
-                                <ValidationMessage For="() => ViewModel.Model.Name" />
-                            </div>
+                            <FluentTextField @bind-Value="ViewModel.Model.Name" id="ViewModel.Model.Name" Label="Nazwa sklepu *" />
+                            <ValidationMessage For="() => ViewModel.Model.Name" />
 
-                            <div class="mb-3">
-                                    <InputTextArea id="ViewModel.Model.Description" class="form-control" rows="3" @bind-Value="ViewModel.Model.Description" />
-                                <label for="ViewModel.Model.Description" class="form-label">Opis sklepu</label>
-                                <ValidationMessage For="() => ViewModel.Model.Description" />
-                                <div class="form-text">Krótki opis Twojego sklepu widoczny w katalogu.</div>
-                            </div>
+                            <FluentTextArea @bind-Value="ViewModel.Model.Description" id="ViewModel.Model.Description" Label="Opis sklepu" Rows="3" />
+                            <ValidationMessage For="() => ViewModel.Model.Description" />
+                            <div class="form-text">Krótki opis Twojego sklepu widoczny w katalogu.</div>
 
-                            <div class="mb-3">
-                                    <InputText id="ViewModel.Model.ContactEmail" class="form-control" @bind-Value="ViewModel.Model.ContactEmail" />
-                                 <label for="ViewModel.Model.ContactEmail" class="form-label">Email kontaktowy</label>
-                                <ValidationMessage For="() => ViewModel.Model.ContactEmail" />
-                                <div class="form-text">Email używany do kontaktu z klientami.</div>
-                            </div>
+                            <FluentTextField @bind-Value="ViewModel.Model.ContactEmail" id="ViewModel.Model.ContactEmail" Label="Email kontaktowy" />
+                            <ValidationMessage For="() => ViewModel.Model.ContactEmail" />
+                            <div class="form-text">Email używany do kontaktu z klientami.</div>
 
-                            <div class="mb-3">
-                                    <InputText id="ViewModel.Model.Phone" class="form-control" @bind-Value="ViewModel.Model.Phone" />
-                                <label for="ViewModel.Model.Phone" class="form-label">Numer telefonu</label>
-                                <ValidationMessage For="() => ViewModel.Model.Phone" />
-                                <div class="form-text">Numer telefonu do kontaktu.</div>
-                            </div>
+                            <FluentTextField @bind-Value="ViewModel.Model.Phone" id="ViewModel.Model.Phone" Label="Numer telefonu" />
+                            <ValidationMessage For="() => ViewModel.Model.Phone" />
+                            <div class="form-text">Numer telefonu do kontaktu.</div>
 
                             <div class="d-flex gap-2">
-                                <button type="submit" class="btn btn-primary" disabled="@ViewModel.IsLoading">
+                                <FluentButton Type="ButtonType.Submit" Appearance="Appearance.Accent" disabled="@ViewModel.IsLoading">
                                     @if (ViewModel.IsLoading)
                                     {
-                                        <span class="spinner-border spinner-border-sm me-2" role="status">Tworzenie...</span>
+                                        <FluentProgressRing />
+                                        <span>Tworzenie...</span>
                                     }
                                     else
                                     {
                                         <span>Utwórz sklep</span>
                                     }
-                                </button>
+                                </FluentButton>
 
-                                <button type="button" class="btn btn-secondary" @onclick="CancelAsync" disabled="@ViewModel.IsLoading">
+                                <FluentButton Type="ButtonType.Button" Appearance="Appearance.Neutral" @onclick="CancelAsync" disabled="@ViewModel.IsLoading">
                                     Anuluj
-                                </button>
+                                </FluentButton>
                             </div>
                             </EditForm>
                         }
                     </div>
-                </div>
+                </FluentCard>
             </div>
         </div>
     }

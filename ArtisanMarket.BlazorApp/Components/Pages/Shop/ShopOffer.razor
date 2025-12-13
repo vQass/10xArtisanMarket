@@ -12,46 +12,34 @@
     @if (ViewModel.IsLoading)
     {
         <div class="text-center py-5">
-            <div class="spinner-border text-primary" role="status">
-                <span class="visually-hidden">£adowanie...</span>
-            </div>
-            <p class="mt-3">£adowanie oferty sklepu...</p>
+            <FluentProgressRing />
+            <p class="mt-3">≈Åadowanie oferty sklepu...</p>
         </div>
     }
     else if (ViewModel.ShopNotFound)
     {
-        <div class="alert alert-warning" role="alert">
-            <h4 class="alert-heading">Sklep nie zosta≥ znaleziony</h4>
-            <p>Sklep o podanym adresie nie istnieje lub zosta≥ usuniÍty.</p>
-            <hr>
-            <p class="mb-0">
-                <a href="/catalog" class="btn btn-primary">PowrÛt do katalogu</a>
-            </p>
-        </div>
+        <FluentMessageBar Intent="MessageIntent.Warning">
+            <strong>Sklep nie zosta≈Ç znaleziony</strong>
+            <p>Sklep o podanym adresie nie istnieje lub zosta≈Ç usuniƒôty.</p>
+            <FluentButton Appearance="Appearance.Accent" href="/catalog">Powr√≥t do katalogu</FluentButton>
+        </FluentMessageBar>
     }
     else if (!string.IsNullOrEmpty(ViewModel.ErrorMessage))
     {
-        <div class="alert alert-danger" role="alert">
-            <h4 class="alert-heading">B≥πd</h4>
+        <FluentMessageBar Intent="MessageIntent.Error">
+            <strong>B≈ÇƒÖd</strong>
             <p>@ViewModel.ErrorMessage</p>
-            <hr>
-            <p class="mb-0">
-                <a href="/catalog" class="btn btn-primary">PowrÛt do katalogu</a>
-            </p>
-        </div>
+            <FluentButton Appearance="Appearance.Accent" href="/catalog">Powr√≥t do katalogu</FluentButton>
+        </FluentMessageBar>
     }
     else if (ViewModel.Shop != null)
     {
-        <!-- Nag≥Ûwek sklepu -->
+        <!-- Nag≈Ç√≥wek sklepu -->
         <div class="mb-4">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item">
-                        <a href="/catalog">Katalog</a>
-                    </li>
-                    <li class="breadcrumb-item active" aria-current="page">@ViewModel.Shop.Name</li>
-                </ol>
-            </nav>
+            <FluentBreadcrumb>
+                <FluentBreadcrumbItem href="/catalog">Katalog</FluentBreadcrumbItem>
+                <FluentBreadcrumbItem Current="true">@ViewModel.Shop.Name</FluentBreadcrumbItem>
+            </FluentBreadcrumb>
 
             <div class="row">
                 <div class="col-lg-8">
@@ -64,11 +52,9 @@
                 <div class="col-lg-4">
                     @if (!string.IsNullOrEmpty(ViewModel.Shop.ContactEmail) || !string.IsNullOrEmpty(ViewModel.Shop.Phone))
                     {
-                        <div class="card">
-                            <div class="card-header">
-                                <h5 class="mb-0">Dane kontaktowe</h5>
-                            </div>
-                            <div class="card-body">
+                        <FluentCard>
+                            <h5 class="mb-0">Dane kontaktowe</h5>
+                            <div>
                                 @if (!string.IsNullOrEmpty(ViewModel.Shop.ContactEmail))
                                 {
                                     <p class="mb-2">
@@ -84,23 +70,23 @@
                                     </p>
                                 }
                             </div>
-                        </div>
+                        </FluentCard>
                     }
                 </div>
             </div>
         </div>
 
-        <!-- Lista produktÛw -->
+        <!-- Lista produkt√≥w -->
         <div class="row">
             <div class="col-12">
                 <h2 class="mb-4">Produkty</h2>
 
                 @if (ViewModel.Products.Count == 0)
                 {
-                    <div class="alert alert-info" role="alert">
-                        <h4 class="alert-heading">Brak produktÛw</h4>
-                        <p>Ten sklep nie ma jeszcze produktÛw.</p>
-                    </div>
+                    <FluentMessageBar Intent="MessageIntent.Info">
+                        <strong>Brak produkt√≥w</strong>
+                        <p>Ten sklep nie ma jeszcze produkt√≥w.</p>
+                    </FluentMessageBar>
                 }
                 else
                 {
@@ -108,25 +94,29 @@
                         @foreach (var product in ViewModel.Products)
                         {
                             <div class="col-md-6 col-lg-4 mb-4">
-                                <div class="card h-100 shadow-sm">
-                                    <div class="card-body d-flex flex-column">
-                                        <h5 class="card-title">@product.Name</h5>
+                                <FluentCard Elevation="Elevation.Two">
+                                    <div class="d-flex flex-column" style="height: 100%;">
+                                        <h5>@product.Name</h5>
 
                                         @if (!string.IsNullOrEmpty(product.Description))
                                         {
-                                            <p class="card-text flex-grow-1">@product.Description</p>
+                                            <p class="flex-grow-1">@product.Description</p>
                                         }
 
                                         <div class="mt-auto">
                                             <div class="d-flex justify-content-between align-items-center mb-3">
                                                 <span class="h4 text-primary mb-0">@product.Price.ToString("C")</span>
                                             </div>
-                                            <a href="/order/@product.Id" class="btn btn-success w-100">
-                                                <i class="bi bi-cart-plus me-2"></i>ZamÛw
-                                            </a>
+
+                                            <FluentAnchor Appearance="Appearance.Accent"
+                                                          Href="@($"/order/{product.Id}")"
+                                                          Class="w-100">
+                                                <i class="bi bi-cart-plus me-2"></i>Zam√≥w
+                                            </FluentAnchor>
+
                                         </div>
                                     </div>
-                                </div>
+                                </FluentCard>
                             </div>
                         }
                     </div>
@@ -148,7 +138,7 @@
         {
             if (string.IsNullOrWhiteSpace(Slug))
             {
-                Logger.LogWarning("PrÛba dostÍpu do strony sklepu bez podania slug");
+                Logger.LogWarning("Pr√≥ba dostƒôpu do strony sklepu bez podania slug");
                 Navigation.NavigateTo("/catalog");
                 return;
             }
@@ -171,8 +161,8 @@
         }
         catch (Exception ex)
         {
-            Logger.LogError(ex, "B≥πd podczas ≥adowania oferty sklepu {Slug}", Slug);
-            ViewModel.ErrorMessage = "Nie uda≥o siÍ za≥adowaÊ danych sklepu. SprÛbuj odúwieøyÊ stronÍ.";
+            Logger.LogError(ex, "B≈ÇƒÖd podczas ≈Çadowania oferty sklepu {Slug}", Slug);
+            ViewModel.ErrorMessage = "Nie uda≈Ço siƒô za≈Çadowaƒá danych sklepu. Spr√≥buj od≈õwie≈ºyƒá stronƒô.";
         }
         finally
         {

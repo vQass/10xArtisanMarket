@@ -14,27 +14,24 @@
     @if (ViewModel.IsLoading)
     {
         <div class="text-center py-5">
-            <div class="spinner-border text-primary" role="status">
-                <span class="visually-hidden">Ładowanie...</span>
-            </div>
+            <FluentProgressRing />
             <p class="mt-3">Ładowanie listy sklepów...</p>
         </div>
     }
     else if (!string.IsNullOrEmpty(ViewModel.ErrorMessage))
     {
-        <div class="alert alert-danger" role="alert">
-            <h4 class="alert-heading">Błąd</h4>
+        <FluentMessageBar Intent="MessageIntent.Error">
+            <strong>Błąd</strong>
             <p>@ViewModel.ErrorMessage</p>
-            <hr>
-            <p class="mb-0">Spróbuj odświeżyć stronę lub skontaktuj się z administratorem.</p>
-        </div>
+            <p>Spróbuj odświeżyć stronę lub skontaktuj się z administratorem.</p>
+        </FluentMessageBar>
     }
     else if (ViewModel.Shops.Count == 0)
     {
-        <div class="alert alert-info" role="alert">
-            <h4 class="alert-heading">Brak sklepów</h4>
+        <FluentMessageBar Intent="MessageIntent.Info">
+            <strong>Brak sklepów</strong>
             <p>Obecnie nie ma dostępnych sklepów w katalogu.</p>
-        </div>
+        </FluentMessageBar>
     }
     else
     {
@@ -42,22 +39,25 @@
             @foreach (var shop in ViewModel.Shops)
             {
                 <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">
+                    <FluentCard Elevation="Elevation.Two">
+                        <div class="d-flex flex-column" style="height: 100%;">
+                            <h5>
                                 <a href="/shop/@shop.Slug" class="text-decoration-none text-dark">
                                     @shop.Name
                                 </a>
                             </h5>
                             @if (!string.IsNullOrEmpty(shop.Description))
                             {
-                                <p class="card-text flex-grow-1">@shop.Description</p>
+                                <p class="flex-grow-1">@shop.Description</p>
                             }
-                            <a href="/shop/@shop.Slug" class="btn btn-primary mt-auto">
+
+                            <FluentAnchor Appearance="Appearance.Accent"
+                                          Href="@($"/shop/{shop.Slug}")"
+                                          Class="mt-auto">
                                 Zobacz sklep
-                            </a>
+                            </FluentAnchor>
                         </div>
-                    </div>
+                    </FluentCard>
                 </div>
             }
         </div>

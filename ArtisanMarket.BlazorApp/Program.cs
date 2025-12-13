@@ -5,6 +5,7 @@ using ArtisanMarket.Domain.Entities;
 using ArtisanMarket.Infrastructure;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.FluentUI.AspNetCore.Components;
 
 namespace ArtisanMarket.BlazorApp
 {
@@ -17,6 +18,9 @@ namespace ArtisanMarket.BlazorApp
             // Add services to the container.
             builder.Services.AddRazorComponents()
                 .AddInteractiveServerComponents();
+
+            // Add Fluent UI components
+            builder.Services.AddFluentUIComponents();
 
             builder.Services.AddRazorPages();
 
