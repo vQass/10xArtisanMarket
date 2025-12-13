@@ -16,9 +16,14 @@
 <div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
     <nav class="nav flex-column">
         <div class="nav-item px-3">
-            <NavLink href="" Match="NavLinkMatch.All" class="nav-link">
+            @*          <NavLink href="" Match="NavLinkMatch.All" class="nav-link">
+
+            </NavLink> *@
+
+            <FluentNavLink href="" Match="NavLinkMatch.All">
                 <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
-            </NavLink>
+            </FluentNavLink>
+
         </div>
 
         <AuthorizeView>
