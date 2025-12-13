@@ -173,3 +173,4 @@ Row Level Security będzie implementowane po stronie aplikacji zgodnie z decyzja
 - Struktura order_items pozwala na łatwe dodanie dodatkowych pól jak rabaty, opcje produktu itp.
 - Brak created_at/updated_at zgodnie z decyzjami z sesji planowania - aplikacja może implementować własne mechanizmy śledzenia zmian jeśli będzie to potrzebne
 
+

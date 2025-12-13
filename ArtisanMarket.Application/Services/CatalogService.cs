@@ -38,5 +38,52 @@ public class CatalogService : ICatalogService
 
         return shops;
     }
+
+    /// <summary>
+    /// Pobiera szczegóły sklepu na podstawie slug.
+    /// Filtruje tylko aktywne sklepy (bez usuniętych).
+    /// </summary>
+    /// <param name="slug">Slug sklepu</param>
+    /// <returns>DTO ze szczegółami sklepu lub null jeśli nie znaleziono</returns>
+    public async Task<ShopDetailsDto?> GetShopBySlugAsync(string slug)
+    {
+        var shop = await _context.Shops
+            .Where(s => s.DeletedAt == null && s.Slug == slug)
+            .Select(s => new ShopDetailsDto(
+                s.Id,
+                s.Name,
+                s.Slug,
+                s.Description,
+                s.ContactEmail,
+                s.Phone
+            ))
+            .FirstOrDefaultAsync();
+
+        return shop;
+    }
+
+    /// <summary>
+    /// Pobiera listę aktywnych produktów dla sklepu na podstawie slug.
+    /// Filtruje tylko aktywne sklepy i produkty.
+    /// </summary>
+    /// <param name="slug">Slug sklepu</param>
+    /// <returns>Lista DTO produktów sklepu</returns>
+    public async Task<List<ProductDto>> GetShopProductsAsync(string slug)
+    {
+        var products = await _context.Shops
+            .Where(s => s.DeletedAt == null && s.Slug == slug)
+            .SelectMany(s => s.Products.Where(p => p.IsActive))
+            .Select(p => new ProductDto(
+                p.Id,
+                p.Name,
+                p.Description,
+                p.Price,
+                new ShopDto(p.Shop.Id, p.Shop.Name, p.Shop.Slug, p.Shop.Description),
+                p.IsActive
+            ))
+            .ToListAsync();
+
+        return products;
+    }
 }
 

@@ -18,6 +18,15 @@ public record ShopDto(
     string? Description
 );
 
+public record ShopDetailsDto(
+    Guid Id,
+    string Name,
+    string Slug,
+    string? Description,
+    string? ContactEmail,
+    string? Phone
+);
+
 public record ProductDto(
     Guid Id,
     string Name,
@@ -195,4 +204,63 @@ public class CreateShopViewModel
     /// Flaga wskazująca, czy operacja została zakończona sukcesem.
     /// </summary>
     public bool IsSuccess { get; set; } = false;
+}
+
+/// <summary>
+/// ViewModel dla strony tworzenia produktu.
+/// Przechowuje stan UI i dane formularza.
+/// </summary>
+public class CreateProductViewModel
+{
+    /// <summary>
+    /// Dane formularza tworzenia produktu.
+    /// </summary>
+    public CreateProductDto Model { get; set; } = new();
+
+    /// <summary>
+    /// Flaga wskazująca, czy dane są obecnie przetwarzane.
+    /// </summary>
+    public bool IsLoading { get; set; } = false;
+
+    /// <summary>
+    /// Globalny komunikat błędu wyświetlany użytkownikowi.
+    /// </summary>
+    public string? ErrorMessage { get; set; }
+
+    /// <summary>
+    /// Flaga wskazująca, czy operacja została zakończona sukcesem.
+    /// </summary>
+    public bool IsSuccess { get; set; } = false;
+}
+
+/// <summary>
+/// ViewModel dla strony podglądu oferty sklepu.
+/// Przechowuje dane sklepu, produkty i stan UI.
+/// </summary>
+public class ShopOfferViewModel
+{
+    /// <summary>
+    /// Szczegóły sklepu.
+    /// </summary>
+    public ShopDetailsDto? Shop { get; set; }
+
+    /// <summary>
+    /// Lista aktywnych produktów sklepu.
+    /// </summary>
+    public List<ProductDto> Products { get; set; } = new();
+
+    /// <summary>
+    /// Flaga wskazująca, czy dane są obecnie ładowane.
+    /// </summary>
+    public bool IsLoading { get; set; } = true;
+
+    /// <summary>
+    /// Komunikat błędu wyświetlany użytkownikowi.
+    /// </summary>
+    public string? ErrorMessage { get; set; }
+
+    /// <summary>
+    /// Flaga wskazująca, czy sklep nie został znaleziony.
+    /// </summary>
+    public bool ShopNotFound { get; set; } = false;
 }

@@ -24,3 +24,5 @@ public interface IShopService
     /// <returns>DTO sklepu lub null jeśli użytkownik nie ma sklepu</returns>
     Task<ShopDto?> GetUserShopAsync(string userId);
 }
+
+

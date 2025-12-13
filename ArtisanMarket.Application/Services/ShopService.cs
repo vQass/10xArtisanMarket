@@ -61,7 +61,7 @@ public class ShopService : IShopService
         // Utwórz nowy sklep
         var shop = new Shop
         {
-            Id = Guid.NewGuid(),
+            Id = Guid.CreateVersion7(),
             UserId = userId,
             Name = dto.Name,
             Slug = slug,
@@ -140,3 +140,5 @@ public class ShopService : IShopService
         return slug;
     }
 }
+
+

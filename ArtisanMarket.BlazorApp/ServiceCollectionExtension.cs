@@ -8,6 +8,7 @@ namespace ArtisanMarket.BlazorApp
         {
             services.AddScoped<ICatalogService, CatalogService>();
             services.AddScoped<IShopService, ShopService>();
+            services.AddScoped<IProductService, ProductService>();
 
             return services;
         }

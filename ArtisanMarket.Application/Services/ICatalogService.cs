@@ -13,5 +13,19 @@ public interface ICatalogService
     /// </summary>
     /// <returns>Lista DTO sklepów do wyświetlenia w katalogu</returns>
     Task<List<ShopDto>> GetAllShopsAsync();
+
+    /// <summary>
+    /// Pobiera szczegóły sklepu na podstawie slug.
+    /// </summary>
+    /// <param name="slug">Slug sklepu</param>
+    /// <returns>DTO ze szczegółami sklepu lub null jeśli nie znaleziono</returns>
+    Task<ShopDetailsDto?> GetShopBySlugAsync(string slug);
+
+    /// <summary>
+    /// Pobiera listę aktywnych produktów dla sklepu na podstawie slug.
+    /// </summary>
+    /// <param name="slug">Slug sklepu</param>
+    /// <returns>Lista DTO produktów sklepu</returns>
+    Task<List<ProductDto>> GetShopProductsAsync(string slug);
 }
 

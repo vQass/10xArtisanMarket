@@ -4,12 +4,12 @@ Zanim zaczniemy, zapoznaj się z poniższymi informacjami:
 
 1. UI/Component Specification:
 <ui_specification>
-@blazor-plan.md (x-x) 
+@blazor-plan.md
 </ui_specification>
 
 2. Related database resources:
 <related_db_resources>
-@db-plan.md (x-x) 
+@db-plan.md
 </related_db_resources>
 
 3. Definicje typów:
@@ -104,4 +104,4 @@ Końcowym wynikiem powinien być dobrze zorganizowany plan wdrożenia w formacie
 
 Końcowe wyniki powinny składać się wyłącznie z planu wdrożenia w formacie markdown i nie powinny powielać ani powtarzać żadnej pracy wykonanej w sekcji analizy.
 
-Pamiętaj, aby zapisać swój plan wdrożenia jako .ai/view-implementation-plan.md. Upewnij się, że plan jest szczegółowy, przejrzysty i zapewnia kompleksowe wskazówki dla zespołu programistów.
+Pamiętaj, aby zapisać swój plan wdrożenia jako .ai/ImplementationPrompts/{feature-name}-implementation-plan.md. Upewnij się, że plan jest szczegółowy, przejrzysty i zapewnia kompleksowe wskazówki dla zespołu programistów.
