@@ -1,0 +1,26 @@
+name: 'Run Tests'
+description: 'Build and run unit tests'
+
+inputs:
+  test-project-path:
+    description: 'Path to test project'
+    required: true
+    default: 'ArtisanMarket.Tests'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Build solution
+      shell: bash
+      run: dotnet build --configuration Release --no-restore
+
+    - name: Run tests
+      shell: bash
+      run: dotnet test ${{ inputs.test-project-path }} --configuration Release --no-build --verbosity normal --logger "trx;LogFileName=test-results.trx"
+
+    - name: Upload test results
+      uses: actions/upload-artifact@v6
+      if: always()
+      with:
+        name: test-results
+        path: '**/*.trx'
