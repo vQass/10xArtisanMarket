@@ -140,5 +140,3 @@ public class ShopService : IShopService
         return slug;
     }
 }
-
-

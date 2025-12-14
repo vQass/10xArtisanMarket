@@ -32,7 +32,3 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
             .HasDatabaseName("idx_users_email");
     }
 }
-
-
-
-

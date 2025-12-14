@@ -174,3 +174,4 @@ Row Level Security będzie implementowane po stronie aplikacji zgodnie z decyzja
 - Brak created_at/updated_at zgodnie z decyzjami z sesji planowania - aplikacja może implementować własne mechanizmy śledzenia zmian jeśli będzie to potrzebne
 
 
+

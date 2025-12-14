@@ -106,3 +106,4 @@ Strona podglądu oferty sklepu umożliwia użytkownikom przeglądanie szczegół
    - Testy jednostkowe dla nowych metod serwisu
    - Testy integracyjne ładowania strony
    - Walidacja responsywności UI
+

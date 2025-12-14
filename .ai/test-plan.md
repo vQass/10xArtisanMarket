@@ -271,33 +271,33 @@ ArtisanMarket to platforma e-commerce umożliwiająca rzemieślnikom sprzedaż p
 
 ## 6. Harmonogram Testów
 
-### 6.1 Faza 1: Przygotowanie (Tydzień 1-2)
+### 6.1 Faza 1: Przygotowanie
 - Konfiguracja frameworków testowych
 - Utworzenie struktury projektu testów
 - Implementacja podstawowych testów jednostkowych
 
-### 6.2 Faza 2: Testy Jednostkowe (Tydzień 3-4)
+### 6.2 Faza 2: Testy Jednostkowe
 - Testy serwisów aplikacji
 - Testy walidacji modeli
 - Testy logiki biznesowej
 - Osiągnięcie min. 80% pokrycia kodu
 
-### 6.3 Faza 3: Testy Integracyjne (Tydzień 5-6)
+### 6.3 Faza 3: Testy Integracyjne
 - Testy z bazą danych
 - Testy transakcji biznesowych
 - Integracja z Identity
 
-### 6.4 Faza 4: Testy UI (Tydzień 7-8)
+### 6.4 Faza 4: Testy UI
 - Testy krytycznych ścieżek
 - Testy walidacji formularzy
 - Testy responsywności
 
-### 6.5 Faza 5: Testy Regresyjne i Wydajnościowe (Tydzień 9-10)
+### 6.5 Faza 5: Testy Regresyjne i Wydajnościowe
 - Pełne testy regresyjne
 - Testy wydajnościowe
 - Testy bezpieczeństwa podstawowe
 
-### 6.6 Faza 6: Przygotowanie do Wdrożenia (Tydzień 11-12)
+### 6.6 Faza 6: Przygotowanie do Wdrożenia
 - Testy konteneryzacji
 - Testy CI/CD
 - Dokumentacja i szkolenia
@@ -318,71 +318,3 @@ ArtisanMarket to platforma e-commerce umożliwiająca rzemieślnikom sprzedaż p
 - **Severity 3 (Średni):** Błędy wpływające na UX (np. błędne komunikaty)
 - **Severity 4 (Niski):** Drobne błędy kosmetyczne
 
-## 8. Role i Odpowiedzialności w Procesie Testowania
-
-### 8.1 Inżynier QA/Test Manager
-- **Odpowiedzialności:**
-  - Projektowanie strategii i planów testów
-  - Nadzór nad jakością kodu i testów
-  - Raportowanie postępów i ryzyka
-  - Współpraca z zespołem deweloperskim
-
-### 8.2 Developerzy
-- **Odpowiedzialności:**
-  - Pisanie testów jednostkowych dla własnego kodu
-  - Utrzymanie wysokiej jakości kodu
-  - Wsparcie w debugowaniu błędów
-  - Code review testów innych developerów
-
-### 8.3 Product Owner
-- **Odpowiedzialności:**
-  - Definiowanie akceptacyjnych kryteriów jakości
-  - Priorytetyzacja błędów
-  - Decyzje o zakresie testów
-
-### 8.4 DevOps/Infrastructure Team
-- **Odpowiedzialności:**
-  - Konfiguracja środowisk testowych
-  - Utrzymanie CI/CD pipeline
-  - Wsparcie w testach konteneryzacji
-
-## 9. Procedury Raportowania Błędów
-
-### 9.1 Narzędzia Raportowania
-- **GitHub Issues:** Dla błędów wymagających naprawy
-- **TestRail/Jira:** Dla zorganizowanego śledzenia testów (jeśli dostępne)
-- **Azure DevOps:** Alternatywne narzędzie do zarządzania testami
-
-### 9.2 Format Raportu Błędu
-**Tytuł:** [SEVERITY] Krótki opis błędu
-
-**Opis:**
-- **Warunki wstępne:** Jak odtworzyć błąd
-- **Kroki do odtworzenia:** Numerowane kroki
-- **Oczekiwany wynik:** Co powinno się stać
-- **Aktualny wynik:** Co się dzieje
-- **Środowisko:** Browser, OS, wersja aplikacji
-- **Załączniki:** Zrzuty ekranu, logi, pliki
-
-**Priorytet:** Krytyczny/Wysoki/Średni/Niski
-**Severity:** 1-4
-**Przypisany do:** Odpowiedzialny developer
-
-### 9.3 Proces Rozwiązywania Błędów
-1. **Raportowanie:** QA tworzy issue z pełnym opisem
-2. **Triage:** Product Owner określa priorytet
-3. **Naprawa:** Developer implementuje fix
-4. **Testowanie:** QA weryfikuje naprawę
-5. **Zamknięcie:** Issue zamknięte po potwierdzeniu
-
-### 9.4 Raporty Podsumowujące
-- **Daily Reports:** Stan testów, nowe błędy, blokery
-- **Weekly Reports:** Postęp, metryki jakości, ryzyka
-- **Release Reports:** Podsumowanie wyników testów przed wydaniem
-
----
-
-**Data utworzenia:** Grudzień 2025
-**Wersja:** 1.0
-**Autor:** Inżynier QA
-**Zatwierdzony przez:** Tech Lead / Product Owner
